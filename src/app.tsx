@@ -2,13 +2,13 @@ import "./app.css";
 import { Button } from "./components/button";
 import { useEffect, useRef, useState } from "react";
 import {
-    AlertClose,
-    AlertConfirm,
+    AlertDialogClose,
+    AlertDialogConfirm,
     AlertDialog,
     AlertDialogContent,
     AlertDialogDescription,
     AlertDialogTrigger,
-    AlertOptions,
+    AlertDialogOptions,
 } from "./components/alert-dialog";
 import Link from "./components/link";
 
@@ -41,10 +41,10 @@ function App() {
                     <AlertDialogTrigger>Open Dialog</AlertDialogTrigger>
                     <AlertDialogContent>
                         <AlertDialogDescription>Hello! I am a little alert</AlertDialogDescription>
-                        <AlertOptions>
-                            <AlertClose>Close</AlertClose>
-                            <AlertConfirm>Confirm</AlertConfirm>
-                        </AlertOptions>
+                        <AlertDialogOptions>
+                            <AlertDialogClose>Close</AlertDialogClose>
+                            <AlertDialogConfirm>Confirm</AlertDialogConfirm>
+                        </AlertDialogOptions>
                     </AlertDialogContent>
                 </AlertDialog>
             </div>

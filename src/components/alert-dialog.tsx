@@ -45,7 +45,7 @@ interface AlertConfirmProps extends ButtonProps {
     onConfirm?: () => void;
 }
 
-const AlertConfirm = forwardRef(
+const AlertDialogConfirm = forwardRef(
     ({ children, onConfirm, ...props }: AlertConfirmProps, ref: ForwardedRef<HTMLButtonElement>) => {
         const { handleClose } = useDialogContext();
         return (
@@ -63,11 +63,11 @@ const AlertConfirm = forwardRef(
         );
     }
 );
-AlertConfirm.displayName = "AlertConfirm";
+AlertDialogConfirm.displayName = "AlertDialogConfirm";
 
 interface AlertCloseProps extends ButtonProps {}
 
-const AlertClose = forwardRef(
+const AlertDialogClose = forwardRef(
     ({ children, variant, ...props }: AlertCloseProps, ref: ForwardedRef<HTMLButtonElement>) => {
         const { handleClose } = useDialogContext();
         return (
@@ -77,11 +77,11 @@ const AlertClose = forwardRef(
         );
     }
 );
-AlertClose.displayName = "AlertClose";
+AlertDialogClose.displayName = "AlertDialogClose";
 
 interface AlertOptionsProps extends HTMLAttributes<HTMLDivElement> {}
 
-const AlertOptions = forwardRef(
+const AlertDialogOptions = forwardRef(
     ({ children, className, ...props }: AlertOptionsProps, ref: ForwardedRef<HTMLDivElement>) => {
         return (
             <div ref={ref} className={twMerge("mt-4 flex justify-end space-x-2", className)} {...props}>
@@ -90,7 +90,7 @@ const AlertOptions = forwardRef(
         );
     }
 );
-AlertOptions.displayName = "AlertOptions";
+AlertDialogOptions.displayName = "AlertDialogOptions";
 
 interface AlertDialogDescriptionProps extends HTMLAttributes<HTMLParagraphElement> {}
 const AlertDialogDescription = forwardRef(
@@ -146,8 +146,8 @@ export {
     AlertDialog,
     AlertDialogTrigger,
     AlertDialogContent,
-    AlertClose,
-    AlertConfirm,
-    AlertOptions,
+    AlertDialogClose,
+    AlertDialogConfirm,
+    AlertDialogOptions,
     AlertDialogDescription,
 };
