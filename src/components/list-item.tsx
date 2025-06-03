@@ -1,13 +1,13 @@
 import { Plus, Trash2 } from "lucide-react";
 import { Button } from "./button";
 import {
-    AlertClose,
-    AlertConfirm,
+    AlertDialogClose,
+    AlertDialogConfirm,
     AlertDialog,
     AlertDialogContent,
     AlertDialogDescription,
     AlertDialogTrigger,
-    AlertOptions,
+    AlertDialogOptions,
 } from "./alert-dialog";
 import { type ReactNode } from "react";
 
@@ -50,10 +50,10 @@ export function ListItem({ title, description, onDelete }: ListItemProps) {
                                 <AlertDialogDescription>
                                     Are you sure you want to delete this item?
                                 </AlertDialogDescription>
-                                <AlertOptions>
-                                    <AlertConfirm onClick={onDelete}>Confirm</AlertConfirm>
-                                    <AlertClose>No thanks!</AlertClose>
-                                </AlertOptions>
+                                <AlertDialogOptions>
+                                    <AlertDialogConfirm onClick={onDelete}>Confirm</AlertDialogConfirm>
+                                    <AlertDialogClose>No thanks!</AlertDialogClose>
+                                </AlertDialogOptions>
                             </AlertDialogContent>
                         </AlertDialog>
                     </div>

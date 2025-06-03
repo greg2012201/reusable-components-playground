@@ -1,6 +1,6 @@
 # Reusable Components Playground
 
-A modern React components playground showcasing reusable, accessible, and type-safe UI components. This project serves as a testbed for building high-quality React components using best practices and modern tooling.
+A modern React components playground showcasing reusable, accessible, and type-safe UI components. This project is a playground for the article on [aboutjs.dev](https://www.aboutjs.dev/en) about [reusable UI components in React](https://www.aboutjs.dev/en/posts/creating-reusable-ui-components-in-react-write-once-use-everywhere).
 
 ## Getting Started
 
