@@ -12,6 +12,7 @@ import {
 import { type ReactNode } from "react";
 
 interface ListItemProps {
+    id: number;
     title: string;
     description: string;
     onDelete?: () => void;
@@ -25,9 +26,12 @@ function Description({ children }: { children: ReactNode }) {
     return <p className="text-gray-600 text-sm leading-relaxed">{children}</p>;
 }
 
-export function ListItem({ title, description, onDelete }: ListItemProps) {
+export function ListItem({ id, title, description, onDelete }: ListItemProps) {
     return (
-        <div className="w-full bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200">
+        <div
+            role="listitem"
+            className="w-full bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200"
+        >
             <div className="p-4">
                 <div className="flex items-start justify-between gap-4">
                     <div className="flex-1 min-w-0">
@@ -41,7 +45,10 @@ export function ListItem({ title, description, onDelete }: ListItemProps) {
                         </Button>
                         <AlertDialog>
                             <AlertDialogTrigger asChild>
-                                <Button className="inline-flex items-center px-3 py-1.5 text-sm font-medium text-white bg-red-600 border border-red-600 rounded-md hover:bg-red-700 hover:border-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transition-colors duration-200">
+                                <Button
+                                    data-testid={`delete-button-${id}`}
+                                    className="inline-flex items-center px-3 py-1.5 text-sm font-medium text-white bg-red-600 border border-red-600 rounded-md hover:bg-red-700 hover:border-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transition-colors duration-200"
+                                >
                                     <Trash2 className="h-4 w-4 mr-1" />
                                     Delete
                                 </Button>

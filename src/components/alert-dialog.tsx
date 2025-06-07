@@ -118,7 +118,13 @@ function AlertDialogContent({ children }: AlertDialogContentProps) {
         <Portal>
             <div className="fixed inset-0 z-50 flex items-center justify-center">
                 <div className="absolute inset-0 bg-black/50" />
-                <div className="relative bg-white rounded-lg p-6 w-full max-w-md mx-4 shadow-xl">{children}</div>
+                <div
+                    role="alertdialog"
+                    aria-modal="true"
+                    className="relative bg-white rounded-lg p-6 w-full max-w-md mx-4 shadow-xl"
+                >
+                    {children}
+                </div>
             </div>
         </Portal>
     );

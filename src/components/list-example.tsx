@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { ListItem } from "./list-item";
-import { list } from "postcss";
 import { EmptyState } from "./empty-state";
 
 type Item = {
@@ -28,6 +27,7 @@ export function ListExample({ items }: ListExampleProps) {
             <div className="space-y-4">
                 {itemsData.map((item) => (
                     <ListItem
+                        id={item.id}
                         key={item.id}
                         title={item.title}
                         description={item.description}
