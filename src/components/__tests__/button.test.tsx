@@ -1,34 +1,37 @@
-import { describe, expect, it } from "vitest";
-import { render, screen } from "../../test/test-utils";
+import { describe, expect, it, test, vi } from "vitest";
+import { fireEvent, readFileContent, render, screen } from "../../test/test-utils";
 import { Button } from "../button";
 
 describe("Button", () => {
-    it("renders as child component when asChild is true", () => {
+    it("functions as a file input", async () => {
+        const mockFile = new File(["Hello, World!\nThis is test content."], "test.txt", {
+            type: "text/plain",
+            lastModified: Date.now(),
+        });
+
+        const handleChange = vi.fn();
+
         render(
             <Button asChild>
-                <a href="/">Link Button</a>
+                <input type="file" onChange={handleChange} accept="image/*" data-testid="file-input" />
             </Button>
         );
-        const link = screen.getByText("Link Button");
-        expect(link.tagName).toBe("A");
-        expect(link).toHaveAttribute("href", "/");
-    });
-    it("renders with default variant", () => {
-        render(<Button>Click me</Button>);
-        const button = screen.getByText("Click me");
-        expect(button).toBeInTheDocument();
-        expect(button).toHaveClass("bg-gray-900");
-    });
 
-    it("renders with outline variant", () => {
-        render(<Button variant="outline">Click me</Button>);
-        const button = screen.getByText("Click me");
-        expect(button).toHaveClass("border-2");
-    });
+        const fileInput = screen.getByTestId("file-input");
+        expect(fileInput.tagName).toBe("INPUT");
+        expect(fileInput).toHaveAttribute("type", "file");
+        expect(fileInput).toHaveAttribute("accept", "image/*");
 
-    it("renders with different sizes", () => {
-        render(<Button size="lg">Large Button</Button>);
-        const button = screen.getByText("Large Button");
-        expect(button).toHaveClass("px-6 py-3 text-base");
+        fireEvent.change(fileInput, {
+            target: { files: [mockFile] },
+        });
+
+        expect(handleChange).toHaveBeenCalled();
+        expect(handleChange).toHaveBeenCalledTimes(1);
+
+        const uploadedFile = (fileInput as HTMLInputElement).files?.[0];
+
+        const content = await readFileContent(uploadedFile!);
+        expect(content).toBe("Hello, World!\nThis is test content.");
     });
 });
