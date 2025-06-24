@@ -141,7 +141,7 @@ export const WithDeleteLastItem: Story = {
     args: {
         items: [ITEMS[0]],
     },
-    play: async ({ context, canvas, step, userEvent }) => {
+    play: async ({ context, canvas, step }) => {
         await step("Render List", async () => {
             await expect(canvas.getByText("Project Alpha")).toBeInTheDocument();
         });
