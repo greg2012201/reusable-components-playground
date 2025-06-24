@@ -32,6 +32,11 @@ const meta = {
         asChild: {
             control: "boolean",
         },
+        type: {
+            control: "select",
+            options: ["button", "submit", "reset"],
+            description: "The type of the button element",
+        },
         children: {
             control: "text",
         },
@@ -49,54 +54,27 @@ export const Default: Story = {
     },
 };
 
-export const Outline: Story = {
-    args: {
-        children: "Outline Button",
-        variant: "outline",
-        size: "md",
-    },
-};
-
 export const Link: Story = {
     args: {
-        children: "Link Button",
+        asChild: true,
+        children: <a href="/">Link as Button</a>,
         variant: "link",
         size: "md",
     },
 };
 
-export const Small: Story = {
-    args: {
-        children: "Small Button",
-        size: "sm",
-    },
-};
-
-export const Medium: Story = {
-    args: {
-        children: "Medium Button",
-        size: "md",
-    },
-};
-
-export const Large: Story = {
-    args: {
-        children: "Large Button",
-        size: "lg",
-    },
-};
-
-export const Disabled: Story = {
-    args: {
-        children: "Disabled Button",
-        disabled: true,
-    },
-};
-
-export const AsChild: Story = {
+export const Upload: Story = {
+    render: (args) => (
+        <>
+            {" "}
+            <Button {...args} />
+        </>
+    ),
     args: {
         asChild: true,
-        children: <a href="/">Link as Button</a>,
+        variant: "outline",
+
+        children: <input type="file" id="fileUpload" name="fileUpload" />,
     },
 };
 
